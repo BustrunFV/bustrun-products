@@ -1,6 +1,4 @@
-:root{
-  --bg:#f6f8fb; --card:#fff; --accent:#1f6feb; --muted:#475569; --border:#e6eef9;
-}
+:root{ --bg:#f6f8fb; --card:#fff; --accent:#1f6feb; --muted:#475569; --border:#e6eef9; }
 *{box-sizing:border-box}
 body{font-family:Inter,system-ui,Arial,Helvetica;background:var(--bg);color:#0f1724;margin:0;padding:0}
 .site-header{padding:1rem;background:linear-gradient(90deg,#fffaf0,#fff);border-bottom:1px solid var(--border)}
