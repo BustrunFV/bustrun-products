@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Технологія продажу — оголошення</title>
+  <base href="./">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <h1>Технологія продажу</h1>
+    </div>
+
+    <nav class="top-controls">
+      <div class="categories" id="categories"></div>
+      <div class="search-wrap">
+        <input id="search" placeholder="Пошук за назвою або описом…" />
+        <button id="admin-btn" title="Адмін">Адмін</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section id="products" class="grid" aria-live="polite"></section>
+    <div id="empty" class="empty">Товари не знайдено.</div>
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> BustrunFV — Контакт: <a id="contact-mail" href="mailto:you@example.com">you@example.com</a></p>
+  </footer>
+
+  <!-- card template -->
+  <template id="card-template">
+    <article class="card">
+      <div class="card-inner">
+        <div class="card-media">
+          <img class="card-main-img" alt="" />
+          <div class="thumbs" aria-hidden="true"></div>
+        </div>
+        <div class="card-body">
+          <h2 class="card-title"></h2>
+          <p class="card-desc"></p>
+          <div class="card-meta">
+            <span class="price"></span>
+            <button class="details">Деталі</button>
+          </div>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <!-- modal for product details / carousel -->
+  <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-label="Деталі товару">
+    <div class="modal-content">
+      <button id="close" aria-label="Закрити">Закрити</button>
+      <div class="carousel">
+        <button id="prev" class="nav" aria-label="Попереднє">‹</button>
+        <img id="modal-img" alt="" />
+        <button id="next" class="nav" aria-label="Наступне">›</button>
+      </div>
+      <h2 id="modal-title"></h2>
+      <p id="modal-desc"></p>
+      <p id="modal-price"></p>
+    </div>
+  </div>
+
+  <!-- admin panel (client-side helper) -->
+  <div id="admin" class="admin" aria-hidden="true">
+    <div class="admin-content">
+      <button id="admin-close">Закрити</button>
+      <h3>Додати оголошення</h3>
+      <form id="admin-form">
+        <label>Назва товару<input name="name" required /></label>
+        <label>Ціна (число)<input name="price" type="number" required /></label>
+        <label>Валюта<input name="currency" value="UAH" /></label>
+        <label>Категорія<input name="category" /></label>
+        <label>Короткий опис<textarea name="description" rows="4"></textarea></label>
+        <label>Завантажити фото (до 10 файлів, jpg/png/gif)
+          <input name="images" id="images-input" type="file" accept="image/png,image/jpeg,image/gif" multiple />
+        </label>
+        <div class="admin-actions">
+          <button type="submit">Згенерувати запис (скачати JSON)</button>
+          <button id="download-all" type="button">Скачати оновлений products.json</button>
+        </div>
+      </form>
+
+      <details>
+        <summary>Інструкція для адмініна</summary>
+        <ol>
+          <li>Після натискання "Згенерувати" з'явиться файл new-product.json — скачай його.</li>
+          <li>Завантаж фото в папку images/ репозиторію (через Upload files).</li>
+          <li>Відкрий products.json → Edit і додай обʼєкт з new-product.json у масив → Commit changes.</li>
+        </ol>
+      </details>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
